@@ -251,6 +251,17 @@ label {
         left: 16px;
         top: 4px;
     }
+
+    input:-internal-autofill-selected {
+        background-color: #fff!important;
+    }
+    
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active{
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+    }
 }
 
 .floating-select-wrapper {
@@ -258,7 +269,8 @@ label {
     .floating-select {
         transition: .2s;
         &:not([value=""]):valid,
-        &:focus {
+        &:focus,
+        &:-webkit-autofill {
             padding-top: 0px;
         }
 
@@ -276,9 +288,21 @@ label {
 }
 
 .floating-select:focus~label,
-.floating-select:not([value=""]):valid~label {
+.floating-select:not([value=""]):valid~label,
+.floating-select:-webkit-autofill~label {
     top: -14px;
     left: 0;
+}
+
+.floating-select:-internal-autofill-selected {
+    background-color: #fff!important;
+}
+  
+.floating-select:-webkit-autofill,
+.floating-select:-webkit-autofill:hover, 
+.floating-select:-webkit-autofill:focus, 
+.floating-select:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
 
