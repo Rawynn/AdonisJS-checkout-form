@@ -220,6 +220,7 @@ label {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    position: relative;
 
     input, select {
         border: none;
@@ -227,6 +228,62 @@ label {
         background-color: transparent;
         font-size: 14px;
     }
+    input {
+        transition: .2s;
+        margin-top: 5px;
+        padding: 8px 0;
+        width: 100%;
+        &:focus,
+        :not(:placeholder-shown) {
+            margin-top: 0;
+        }
+    }
+
+    input:focus + label,
+    input:not(:placeholder-shown) + label {
+        top: -14px;
+        left: 0;
+    }
+
+    label {
+        transition: .2s;
+        position: absolute;
+        left: 16px;
+        top: 4px;
+    }
+}
+
+.floating-select-wrapper {
+    margin: 8px 0;
+    .floating-select {
+        transition: .2s;
+        &:not([value=""]):valid,
+        &:focus {
+            padding-top: 0px;
+        }
+
+    }
+    select {
+        margin: 0;
+    }
+
+    label {
+        transition: .2s;
+        position: absolute;
+        left: 16px;
+        top: 4px;
+    }
+}
+
+.floating-select:focus~label,
+.floating-select:not([value=""]):valid~label {
+    top: -14px;
+    left: 0;
+}
+
+
+option[disabled] {
+    color: $gray;
 }
 
 .form-group-select {
@@ -239,6 +296,7 @@ label {
         position: absolute;
         left: 16px;
         top: 14px;
+        z-index: 2;
         @media(max-width: 991px) {
             top: 6px;
         }
@@ -443,6 +501,10 @@ h3 {
     form {
         width: 100%;
         margin-right: 16px;
+    }
+
+    .button--order {
+        margin-top: 32px;
     }
 }
 

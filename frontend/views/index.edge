@@ -35,12 +35,13 @@
         type: 'email'
       })
 
-      <div class="relative input--smaller">
-        <label for="country" class="form-group-select-label">Country</label>
-        <select id="country" name="country" class="form-group form-group-select">
+      <div class="relative input--smaller floating-select-wrapper">
+        <select id="country" name="country" class="form-group form-group-select floating-select" onclick="this.setAttribute('value', this.value);" value="">
+          <option value="" disabled selected hidden>Select your country</option>
           <option value="United States">United States</option>
           <option value="Poland">Poland</option>
         </select>
+        <label for="country" class="form-group-select-label">Country</label>
         <span class="arrow-down-icon">
           @!component('components/svg/arrow-down-icon')
         </span>
