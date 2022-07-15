@@ -2,7 +2,9 @@
 @set('title', 'Bacon factory')
 
 @section('body')
-  @!component('snowdog/bacon', {
-    img: '/images/bacon.jpg'
-  })
+  <div class="snowdog-bacon-wrapper relative">
+    @!component('snowdog/bacon', {
+      img: '/images/bacon.jpg'
+    })
+  </div>
 @end

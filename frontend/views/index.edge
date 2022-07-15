@@ -2,7 +2,97 @@
 @set('title', 'Home page')
 
 @section('body')
-  @!component('components/welcome', {
-    source: 'resources/views/index.edge'
+
+<form action="{{ route('/order') }}" method="POST">
+  @!component('components/input', {
+    label: 'First name',
+    placeholder: 'Elon',
+    id: 'firstName'
   })
+
+  @!component('components/input', {
+    label: 'Last name',
+    placeholder: 'Musk',
+    id: 'lastName'
+  })
+
+  @!component('components/input', {
+    label: 'Email',
+    placeholder: 'elon@spacex.com',
+    id: 'email',
+    type: 'email'
+  })
+
+  <div>
+    <label for="country">Country</label>
+    <select id="country" name="country">
+      <option value="United States">United States</option>
+      <option value="Poland">Poland</option>
+    </select>
+  </div>
+
+  @!component('components/input', {
+    label: 'Postal Code',
+    placeholder: '10001',
+    id: 'postalCode'
+  })
+
+  @!component('components/input', {
+    label: 'Phone Number',
+    placeholder: '(212) 692-93-92',
+    id: 'phone'
+  })
+
+  <!-- unfortunately Stripe isnt free -->
+
+  @!component('components/input', {
+    label: 'Credit Card Number',
+    placeholder: '0000 - 0000 - 0000 - 0000',
+    id: 'creditCard'
+  })
+
+  @!component('components/input', {
+    label: 'Security code',
+    placeholder: '***',
+    id: 'CVV'
+  })
+
+  @!component('components/input', {
+    label: 'Expiration date',
+    placeholder: 'MM/YY',
+    id: 'expDate'
+  })
+
+  <button type="submit">Send</button>
+</form>
+  
+
+
+  <div class="box">
+    <div>
+        <h3 class="box-title">Your order</h3>
+        <div class="box-section">
+            @each(item in cart.items)
+              <div>
+                  <p>{{ item.name }}</p>
+                  <p>{{ item.price }}</p>
+              </div>
+            @end
+        </div>
+        <div class="box-taxes">
+            <div>
+                <p>Total purchases</p>
+                <p>$ {{ cart.totals.subTotal }}</p>
+            </div>
+            <div>
+                <p>Estimated tax</p>
+                <p>$ {{ cart.totals.tax }}</p>
+            </div>
+        </div>
+        <div class="box-summary">
+            <p>Total</p>
+            <p>$ {{ cart.totals.grandTotal }}</p>
+        </div>
+    </div>
+  </div>
 @end

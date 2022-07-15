@@ -145,6 +145,8 @@ Encore.configureDevServerOptions((options) => {
     directory: join(__dirname, './resources/views'),
     watch: true,
   })
+
+  delete options.client;
 })
 
 /*
@@ -156,7 +158,7 @@ Encore.configureDevServerOptions((options) => {
 | favorite CSS precompiler
 |
 */
-// Encore.enableSassLoader()
+Encore.enableSassLoader()
 // Encore.enableLessLoader()
 // Encore.enableStylusLoader()
 
