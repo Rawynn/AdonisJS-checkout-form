@@ -3,96 +3,142 @@
 
 @section('body')
 
-<form action="{{ route('/order') }}" method="POST">
-  @!component('components/input', {
-    label: 'First name',
-    placeholder: 'Elon',
-    id: 'firstName'
-  })
+<section class="order-summary">
+  <form action="{{ route('/order') }}" method="POST">
+    <h2>
+      <span class="section-circle mr-8">1</span>
+      Personal Information
+    </h2>
 
-  @!component('components/input', {
-    label: 'Last name',
-    placeholder: 'Musk',
-    id: 'lastName'
-  })
+    <div class="indent-section">
+      <div class="input--smaller">
+        @!component('components/input', {
+          label: 'First name',
+          placeholder: 'Elon',
+          id: 'firstName'
+        })
+      </div>
 
-  @!component('components/input', {
-    label: 'Email',
-    placeholder: 'elon@spacex.com',
-    id: 'email',
-    type: 'email'
-  })
+      <div class="input--smaller">
+        @!component('components/input', {
+          label: 'Last name',
+          placeholder: 'Musk',
+          id: 'lastName'
+        })
+      </div>
+    
 
-  <div>
-    <label for="country">Country</label>
-    <select id="country" name="country">
-      <option value="United States">United States</option>
-      <option value="Poland">Poland</option>
-    </select>
-  </div>
+      @!component('components/input', {
+        label: 'Email',
+        placeholder: 'elon@spacex.com',
+        id: 'email',
+        type: 'email'
+      })
 
-  @!component('components/input', {
-    label: 'Postal Code',
-    placeholder: '10001',
-    id: 'postalCode'
-  })
+      <div class="relative input--smaller">
+        <label for="country" class="form-group-select-label">Country</label>
+        <select id="country" name="country" class="form-group form-group-select">
+          <option value="United States">United States</option>
+          <option value="Poland">Poland</option>
+        </select>
+        <span class="arrow-down-icon">
+          @!component('components/svg/arrow-down-icon')
+        </span>
+      </div>
 
-  @!component('components/input', {
-    label: 'Phone Number',
-    placeholder: '(212) 692-93-92',
-    id: 'phone'
-  })
+      <div class="input--smaller">
+        @!component('components/input', {
+          label: 'Postal Code',
+          placeholder: '10001',
+          id: 'postalCode'
+        })
+      </div>
 
-  <!-- unfortunately Stripe isnt free -->
+      @!component('components/input', {
+        label: 'Phone Number',
+        placeholder: '(212) 692-93-92',
+        id: 'phone'
+      })
+    </div>
 
-  @!component('components/input', {
-    label: 'Credit Card Number',
-    placeholder: '0000 - 0000 - 0000 - 0000',
-    id: 'creditCard'
-  })
+    <h2>
+      <span class="section-circle mr-8">2</span>
+      <span class="mr-10">
+        Payment Details
+      </span> 
+      <span class="lock-icon">
+        @!component('components/svg/lock-icon')
+      </span>
+    </h2>
 
-  @!component('components/input', {
-    label: 'Security code',
-    placeholder: '***',
-    id: 'CVV'
-  })
+    <!-- unfortunately Stripe isnt free -->
+    <div class="indent-section">
+      <div class="relative credit-card-holder w-full">
+        @!component('components/input', {
+          label: 'Credit Card Number',
+          placeholder: '0000 - 0000 - 0000 - 0000',
+          id: 'creditCard'
+        })
+        <span class="visa-icon">
+          @!component('components/svg/visa-icon')
+        </span>
+      </div>
+      
+      <div class="input--smaller relative">
+        @!component('components/input', {
+          label: 'Security code',
+          placeholder: '***',
+          id: 'CVV'
+        })
+        <span class="question-icon">
+          @!component('components/svg/question-icon')
+        </span>
+      </div>
 
-  @!component('components/input', {
-    label: 'Expiration date',
-    placeholder: 'MM/YY',
-    id: 'expDate'
-  })
+      <div class="input--smaller">
+        @!component('components/input', {
+          label: 'Expiration date',
+          placeholder: 'MM/YY',
+          id: 'expDate'
+        })
+      </div>
+      <button type="submit" class="button button--order w-full">
+        <span class="cart-icon mr-10">
+          @!component('components/svg/cart-icon')
+        </span>
+        Complete Purchase
+      </button>
+    </div>
+  </form>
 
-  <button type="submit">Send</button>
-</form>
-  
-
-
-  <div class="box">
-    <div>
-        <h3 class="box-title">Your order</h3>
-        <div class="box-section">
-            @each(item in cart.items)
-              <div>
-                  <p>{{ item.name }}</p>
-                  <p>{{ item.price }}</p>
-              </div>
-            @end
-        </div>
-        <div class="box-taxes">
+  <div class="order-box-wrapper">
+    <div class="order-box">
+      <h3 class="box-title">Your order</h3>
+      <div class="box-section">
+          @each(item in cart.items)
             <div>
-                <p>Total purchases</p>
-                <p>$ {{ cart.totals.subTotal }}</p>
+                <p>{{ item.name }}</p>
+                <p>{{ item.price }}</p>
             </div>
-            <div>
-                <p>Estimated tax</p>
-                <p>$ {{ cart.totals.tax }}</p>
-            </div>
+          @end
+      </div>
+      <div class="box-taxes">
+          <div>
+              <p>Total purchases</p>
+              <p>$ {{ cart.totals.subTotal }}</p>
+          </div>
+          <div>
+              <p>Estimated tax</p>
+              <p>$ {{ cart.totals.tax }}</p>
+          </div>
+      </div>
+      <div class="box-summary">
+        <div>
+          <p>Total</p>
+          <p class="total-highlight">$ {{ cart.totals.grandTotal }}</p>
         </div>
-        <div class="box-summary">
-            <p>Total</p>
-            <p>$ {{ cart.totals.grandTotal }}</p>
-        </div>
+      </div>
     </div>
   </div>
+</section>
 @end
