@@ -447,6 +447,12 @@ h3 {
 }
 
 @media (min-width: 992px) {
+    .order-box-wrapper {
+        .order-box {
+            margin-top: 48px;
+        }
+    }
+
     .input--smaller {
         width: calc(50% - 8px);
     }
