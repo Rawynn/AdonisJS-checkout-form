@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         imagesContainer.appendChild(clonedItem).classList.add('cloned')
         const lastClonedItem = Array.from(
             document.querySelectorAll('.cloned')
-        ).pop()  
+        ).pop()
         randomValuesItem(lastClonedItem)
     }
 
@@ -84,25 +84,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let validate = () => {
-        const firstName = document.querySelector('#firstName');
-        const lastName = document.querySelector('#lastName');
-        const email = document.querySelector('#email');
-        const postalCode = document.querySelector('#postalCode');
-        const phone = document.querySelector('#phone');
-        const creditCard = document.querySelector('#creditCard');
-        const CVV = document.querySelector('#CVV');
-        const cardExp = document.querySelector('#expDate');
+        const firstName = document.querySelector('#firstName')
+        const lastName = document.querySelector('#lastName')
+        const email = document.querySelector('#email')
+        const postalCode = document.querySelector('#postalCode')
+        const phone = document.querySelector('#phone')
+        const creditCard = document.querySelector('#creditCard')
+        const CVV = document.querySelector('#CVV')
+        const cardExp = document.querySelector('#expDate')
 
-        isFieldValid(firstName) 
-        isFieldValid(lastName) 
-        isFieldValid(email) 
-        isFieldValid(postalCode) 
+        isFieldValid(firstName)
+        isFieldValid(lastName)
+        isFieldValid(email)
+        isFieldValid(postalCode)
         isFieldValid(phone)
-        isFieldValid(creditCard) 
-        isFieldValid(CVV) 
+        isFieldValid(creditCard)
+        isFieldValid(CVV)
         isFieldValid(cardExp)
 
-        return isFieldValid(firstName) && isFieldValid(lastName) && isFieldValid(email) && isFieldValid(postalCode) && isFieldValid(phone) && isFieldValid(creditCard) && isFieldValid(CVV) && isFieldValid(cardExp)
+        return isFieldValid(firstName) && isFieldValid(lastName) && isFieldValid(email)
+        && isFieldValid(postalCode) && isFieldValid(phone) && isFieldValid(creditCard)
+        && isFieldValid(CVV) && isFieldValid(cardExp)
     }
 
     let orderForm = document.querySelector('.order-summary form')
