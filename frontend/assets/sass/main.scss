@@ -158,7 +158,6 @@ main code {
             max-width: 80%;
             opacity: 0;
             transition: 2s;
-            //max-width: random(600) + 200px; //200-800
         }
     }
 }
@@ -234,7 +233,7 @@ label {
         padding: 4px 0;
         width: 100%;
         &:focus,
-        :not(:placeholder-shown) {
+        &:not(:placeholder-shown) {
             margin-top: 0;
         }
     }
@@ -261,6 +260,24 @@ label {
     input:-webkit-autofill:focus, 
     input:-webkit-autofill:active{
         -webkit-box-shadow: 0 0 0 30px white inset !important;
+    }
+}
+
+.input--error {
+    border: 1px solid $red;
+}
+
+.helper {
+    display: none;
+    color: $red;
+    font-size: 11px;
+    margin-left: 16px;
+    p {
+        margin-bottom: 5px;
+    }
+
+    &--show {
+        display: block;
     }
 }
 
@@ -351,8 +368,7 @@ select {
     .visa-icon {
         position: absolute;
         right: 16px;
-        top: 58%;
-        transform: translate(0, -50%);
+        top: 21px;
     }
 }
 

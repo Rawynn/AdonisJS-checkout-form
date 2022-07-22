@@ -1,4 +1,9 @@
-<div class="form-group">
-    <input id="{{ id }}" name="{{ id }}" type="{{ type ? type : 'text' }}" placeholder="{{ placeholder? placeholder : '' }}" class="">
-    <label for="{{ id }}" class="">{{ label ? label : '' }}</label>
+<div class="w-full input-wrapper">
+    <div class="form-group">
+        <input id="{{ id }}" name="{{ id }}" type="{{ type ? type : 'text' }}" placeholder="{{ placeholder? placeholder : '' }}" {{ $props.serializeOnly(['pattern']) }}>
+        <label for="{{ id }}">{{ label ? label : '' }}</label>
+    </div>
+    <div class="helper">
+        <p>Please fill {{ id }} field correctly.</p>
+    </div>
 </div>
