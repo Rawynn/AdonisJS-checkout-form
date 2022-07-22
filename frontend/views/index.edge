@@ -37,16 +37,18 @@
         pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}'
       })
 
-      <div class="relative input--smaller floating-select-wrapper">
-        <select id="country" name="country" class="form-group form-group-select floating-select" onclick="this.setAttribute('value', this.value);" value="">
-          <option value="" disabled selected hidden>Select your country</option>
-          <option value="United States">United States</option>
-          <option value="Poland">Poland</option>
-        </select>
-        <label for="country" class="form-group-select-label">Country</label>
-        <span class="arrow-down-icon">
-          @!component('components/svg/arrow-down-icon')
-        </span>
+      <div class="input--smaller floating-select-wrapper">
+        <div class="relative">
+          <select id="country" name="country" class="form-group form-group-select floating-select" onclick="this.setAttribute('value', this.value);" value="">
+            <option value="" disabled selected hidden>Select your country</option>
+            <option value="United States">United States</option>
+            <option value="Poland">Poland</option>
+          </select>
+          <label for="country" class="form-group-select-label">Country</label>
+          <span class="arrow-down-icon">
+            @!component('components/svg/arrow-down-icon')
+          </span>
+        </div>
       </div>
 
       <div class="input--smaller">
