@@ -111,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     orderButton.addEventListener('click', (e) => {
         e.preventDefault()
-        console.log(validate())
         if(validate()) {
             orderForm.submit()
         }
